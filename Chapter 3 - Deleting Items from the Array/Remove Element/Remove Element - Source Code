@@ -1,0 +1,22 @@
+/*        LANGUAGE C        */
+
+int removeElement(int* nums, int numsSize, int val){
+    
+    int length = (numsSize - 1), temp = 0;
+    //making sure that the variable length points at the last index of the array.
+    
+    for(int i=0 ; i<=length ; i++) {
+        
+        if(nums[i] == val) {
+            temp = nums[i];
+            nums[i] = nums[length];
+            nums[length] = temp;
+            i--;
+            //for checking the value swapped if its the same one.
+            length--;
+        }
+    }
+    
+    return (length + 1);
+}
+
