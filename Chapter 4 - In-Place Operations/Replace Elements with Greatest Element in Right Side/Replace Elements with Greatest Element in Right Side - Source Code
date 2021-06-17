@@ -1,0 +1,25 @@
+/*        LANGUAGE C        */
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* replaceElements(int* arr, int arrSize, int* returnSize){
+    
+    *returnSize = arrSize;
+    int* ptr = (int*)calloc(arrSize, sizeof(int));
+    
+    int relativeMaxValue = 0;
+    for(int i=0 ; i<arrSize ; i++) {
+        
+        for(int j = (i+1) ; j<arrSize ; j++) {
+            
+            if(relativeMaxValue < arr[j]) 
+                relativeMaxValue = arr[j];  
+        }
+        ptr[i] = relativeMaxValue;
+        relativeMaxValue = 0;
+    }
+    ptr[arrSize - 1] = -1;
+    
+    return ptr;
+}
