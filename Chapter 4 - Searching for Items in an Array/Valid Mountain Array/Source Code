@@ -1,0 +1,34 @@
+/*        LANGUAGE C        */
+
+bool validMountainArray(int* arr, int arrSize) {
+    
+    if (arrSize < 3) {
+        return false;
+    }
+    
+    int maxElement = 0, maxElementIndex = 0;
+
+
+    for(int i=0 ; i<arrSize ; i++) {
+        
+        if(maxElement < arr[i]) {
+            maxElement = arr[i];
+            maxElementIndex = i;
+        }
+    }
+    
+    if (maxElementIndex == 0 || maxElementIndex == (arrSize - 1)) {
+        return false;
+    }
+    
+    for(int i=0 ; i<maxElementIndex ; i++) {
+        if(arr[i + 1] <= arr[i])
+            return false;
+    }
+    
+    for(int i=maxElementIndex ; i<(arrSize-1) ; i++) {
+        if(arr[i + 1] >= arr[i]) 
+            return false;
+    }
+    return true;
+}
