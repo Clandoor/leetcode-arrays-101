@@ -1,0 +1,18 @@
+/*        LANGUAGE C        */
+
+void moveZeroes(int* nums, int numsSize) {
+    
+    if(numsSize < 2)
+        return;
+    
+    int pointerOne = 0, pointerTwo = 0;
+    for(pointerOne ; pointerOne < numsSize ; pointerOne++) {
+        
+        if(nums[pointerOne] != 0) 
+            nums[pointerTwo++] = nums[pointerOne];
+    }
+    
+    for(pointerTwo ; pointerTwo < numsSize ; pointerTwo++) {
+        nums[pointerTwo] = 0;
+    }
+}
