@@ -1,0 +1,22 @@
+/*        LANGUAGE C        */
+
+void moveZeroes(int* nums, int numsSize){
+    
+    if(numsSize < 2) {
+        return;
+    }
+    
+    int tempVariable;
+    for(int i=0 ; i<numsSize ; i++) {
+        if (nums[i] == 0) {
+            for(int j=(i + 1) ; j<numsSize ; j++) {
+                if(nums[j] != 0) {
+                    tempVariable = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = tempVariable;
+                    break;
+                }
+            }
+        }
+    }
+}
