@@ -1,0 +1,31 @@
+/*        LANGUAGE C        */
+
+int heightChecker(int* heights, int heightsSize) {
+    
+    int sortedHeights[heightsSize], tempVariable = 0, minimumStudents = 0;
+    
+    if(heightsSize < 2)
+        return 0;
+    
+    for(int i=0 ; i<heightsSize ; i++) {
+        sortedHeights[i] = heights[i];
+    }
+    
+    for(int i=0 ; i<(heightsSize - 1) ; i++) {
+        
+        for(int j=0 ; j<(heightsSize - i - 1) ; j++) {
+            if(sortedHeights[j + 1] < sortedHeights[j]) {
+                tempVariable = sortedHeights[j];
+                sortedHeights[j] = sortedHeights[j + 1];
+                sortedHeights[j + 1] = tempVariable;
+            }    
+        }
+    }
+    
+    for(int i=0 ; i<heightsSize ; i++) {
+        if(heights[i] != sortedHeights[i]) {
+            minimumStudents++;
+        }
+    }
+    return minimumStudents;
+}
