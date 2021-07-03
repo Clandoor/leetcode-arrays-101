@@ -1,0 +1,35 @@
+/*        LANGUAGE C        */
+
+int thirdMax(int* nums, int numsSize) {
+    
+    if(numsSize == 1)
+        return nums[numsSize - 1];
+    
+    
+    long maxValueOne = LONG_MIN, maxValueTwo = LONG_MIN, maxValueThree = LONG_MIN;
+    int counter = 0;
+    
+    for(int i=0 ; i<numsSize ; i++) {
+        if(maxValueOne < nums[i]) {
+            maxValueOne = nums[i];
+        }
+    }
+    
+    for(int i=0 ; i<numsSize ; i++) {
+        if(nums[i] < maxValueOne && nums[i] >= maxValueTwo)
+            maxValueTwo = nums[i];  
+    }
+    
+    for(int i=0 ; i<numsSize ; i++) {
+        if(nums[i] < maxValueOne && nums[i] < maxValueTwo && nums[i] >= maxValueThree) { 
+            maxValueThree = nums[i];   
+            counter++;
+        }
+    }
+    
+    if(counter > 0)
+        return maxValueThree;
+    
+    else
+        return maxValueOne;
+}
