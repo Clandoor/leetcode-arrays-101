@@ -1,0 +1,31 @@
+/*        LANGUAGE C        */
+
+/**
+ * Note: The returned array must be malloced, assuming caller calls free().
+ */
+ 
+int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize) {
+    
+    if(numsSize == 0) {
+        *returnSize = numsSize;
+        return (int*)malloc(numsSize * sizeof(int));
+    }
+    
+    int missingNumsCounter = 0;
+    int* mallocedNums = (int*)malloc(numsSize * sizeof(int));
+    
+    for(int i=1 ; i<=numsSize ; i++) {
+        for(int j=0 ; j<numsSize ; j++) {
+            if(nums[j] == i) {
+                break;
+            }
+            
+            if(j == (numsSize - 1)) {
+                mallocedNums[missingNumsCounter] = i;
+                missingNumsCounter++;
+            }
+        }
+    }
+    *returnSize = missingNumsCounter ;
+    return mallocedNums;
+}
