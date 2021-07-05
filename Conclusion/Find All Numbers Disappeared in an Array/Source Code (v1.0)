@@ -26,6 +26,6 @@ int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize) {
             }
         }
     }
-    *returnSize = missingNumsCounter ;
+    *returnSize = missingNumsCounter;
     return mallocedNums;
 }
